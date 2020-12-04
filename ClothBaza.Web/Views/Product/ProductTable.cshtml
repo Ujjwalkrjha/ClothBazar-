@@ -1,0 +1,55 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "ProductTable";
+}
+@Scripts.Render("~/bundles/jquery")
+<div>
+    <form method="post">
+        <input name="Search" id="searchTxt" />
+        <button type="button" id="searchBtn">Search</button>
+        <button>New</button>
+    </form>
+</div>
+<h2>Product Table</h2>
+<div>
+<table>
+    <thead>
+        <tr>Product</tr>
+        <tr>Category</tr>
+        <tr>Price</tr>
+        <tr>Action</tr>
+    </thead>
+    <tbody>
+        @foreach (var Product in Model)
+        {
+            <tr>
+                <td>@Product.Name</td>
+                <td>@Product.Category</td>
+                <td>@Product.Price</td>
+                <td><button>Edit</button>
+                <td>
+                <td><button>Delete</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<script>
+    $("#searchBtn").click(function () {
+        //alert("in JS");
+        var searchVal = $("#searchTxt").val();
+        //alert(searchVal);
+        $.ajax({
+
+            url: "/Product/ProductTable",
+            data: {
+                search: searchVal
+            }
+        })
+            //success: function (result) { }
+            .done(function (response) { $("#tableContainer").html(response); })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) { alert("fail"); })
+
+    });
+</script>
