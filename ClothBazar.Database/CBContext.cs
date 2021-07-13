@@ -11,7 +11,7 @@ namespace ClothBazar.Database
     public class CBContext : DbContext
 
     {
-        public CBContext() :base("ClothBazarConnection")
+        public CBContext() : base("ClothBazarConnection")
         {
 
         }
