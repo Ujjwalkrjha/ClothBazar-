@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ClothBazar.Services
 {
    public class CategoriesService
-    {
+   {
         public void SaveCategory(Category category)
         {
             using (var context = new CBContext())
